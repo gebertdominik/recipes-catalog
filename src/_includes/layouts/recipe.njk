@@ -10,7 +10,9 @@ layout: layouts/base.njk
   </header>
 
   {% if image %}
-    <img class="recipe__image" src="{{ image | url }}" alt="{{ title }}" />
+    <figure class="recipe__figure">
+      <img class="recipe__image" src="{{ image | url }}" alt="{{ title }}" />
+    </figure>
   {% endif %}
 
   <dl class="recipe__meta">
@@ -28,21 +30,31 @@ layout: layouts/base.njk
     </p>
   {% endif %}
 
-  {% if ingredients %}
-    <section class="recipe__ingredients">
-      <h2>Ingredients</h2>
-      <ul>
-        {% for ingredient in ingredients %}
-          <li>{{ ingredient }}</li>
-        {% endfor %}
-      </ul>
-    </section>
-  {% endif %}
+  <div class="recipe__body">
+    {% if ingredients %}
+      <aside class="recipe__ingredients">
+        <h2>Ingredients</h2>
+        <ul class="ingredients" data-ingredients>
+          {% for ing in ingredients %}
+            {% set amount = ing.amount or "" %}
+            {% set item = ing.item or ing %}
+            <li>
+              <label class="ingredient">
+                <input type="checkbox" class="ingredient__check" />
+                <span class="ingredient__amount">{{ amount }}</span>
+                <span class="ingredient__name">{{ item }}</span>
+              </label>
+            </li>
+          {% endfor %}
+        </ul>
+      </aside>
+    {% endif %}
 
-  <section class="recipe__instructions">
-    <h2>Instructions</h2>
-    {{ content | safe }}
-  </section>
+    <div class="recipe__instructions">
+      <h2>Instructions</h2>
+      {{ content | safe }}
+    </div>
+  </div>
 </article>
 
 <script type="application/ld+json">
@@ -57,7 +69,7 @@ layout: layouts/base.njk
   {% if cookTime %}"cookTime": "{{ cookTime | minutesToDuration }}",{% endif %}
   {% if totalTime %}"totalTime": "{{ totalTime | minutesToDuration }}",{% endif %}
   {% if tags %}"keywords": {{ (tags | join(", ")) | dump | safe }},{% endif %}
-  {% if ingredients %}"recipeIngredient": {{ ingredients | dump | safe }},{% endif %}
+  {% if ingredients %}"recipeIngredient": [{% for ing in ingredients %}{% set amount = ing.amount or "" %}{% set item = ing.item or ing %}{{ (amount ~ " " ~ item) | trim | dump | safe }}{{ "," if not loop.last }}{% endfor %}],{% endif %}
   "author": {
     "@type": "Person",
     "name": {{ site.author | dump | safe }}

@@ -11,15 +11,23 @@ prepTime: 10
 cookTime: 15
 totalTime: 25
 ingredients:
-  - 250 g all-purpose flour
-  - 2 tbsp sugar
-  - 2 tsp baking powder
-  - 1/2 tsp baking soda
-  - 1/2 tsp salt
-  - 400 ml buttermilk
-  - 2 large eggs
-  - 60 g butter, melted
-  - Butter or oil, for the pan
+  - amount: 250 g
+    item: all-purpose flour
+  - amount: 2 tbsp
+    item: sugar
+  - amount: 2 tsp
+    item: baking powder
+  - amount: 1/2 tsp
+    item: baking soda
+  - amount: 1/2 tsp
+    item: salt
+  - amount: 400 ml
+    item: buttermilk
+  - amount: "2"
+    item: large eggs
+  - amount: 60 g
+    item: butter, melted
+  - item: Butter or oil, for the pan
 ---
 
 1. In a large bowl, whisk together the flour, sugar, baking powder, baking soda, and salt.

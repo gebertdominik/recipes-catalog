@@ -11,15 +11,24 @@ prepTime: 20
 cookTime: 12
 totalTime: 32
 ingredients:
-  - 280 g all-purpose flour
-  - 1 tsp baking soda
-  - 1/2 tsp salt
-  - 170 g butter, melted
-  - 200 g brown sugar
-  - 100 g white sugar
-  - 1 large egg plus 1 egg yolk
-  - 2 tsp vanilla extract
-  - 300 g chocolate chips
+  - amount: 280 g
+    item: all-purpose flour
+  - amount: 1 tsp
+    item: baking soda
+  - amount: 1/2 tsp
+    item: salt
+  - amount: 170 g
+    item: butter, melted
+  - amount: 200 g
+    item: brown sugar
+  - amount: 100 g
+    item: white sugar
+  - amount: "1"
+    item: large egg, plus 1 egg yolk
+  - amount: 2 tsp
+    item: vanilla extract
+  - amount: 300 g
+    item: chocolate chips
 ---
 
 1. Preheat the oven to 165°C (325°F) and line two baking sheets with parchment paper.

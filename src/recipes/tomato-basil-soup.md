@@ -11,15 +11,24 @@ prepTime: 15
 cookTime: 45
 totalTime: 60
 ingredients:
-  - 1.5 kg ripe tomatoes, halved
-  - 1 onion, quartered
-  - 4 cloves garlic, unpeeled
-  - 3 tbsp olive oil
-  - 1 tsp salt
-  - 1/2 tsp black pepper
-  - 500 ml vegetable stock
-  - 1 large handful fresh basil leaves
-  - 100 ml heavy cream (optional)
+  - amount: 1.5 kg
+    item: ripe tomatoes, halved
+  - amount: "1"
+    item: onion, quartered
+  - amount: 4 cloves
+    item: garlic, unpeeled
+  - amount: 3 tbsp
+    item: olive oil
+  - amount: 1 tsp
+    item: salt
+  - amount: 1/2 tsp
+    item: black pepper
+  - amount: 500 ml
+    item: vegetable stock
+  - amount: 1 handful
+    item: fresh basil leaves
+  - amount: 100 ml
+    item: heavy cream (optional)
 ---
 
 1. Preheat the oven to 200°C (400°F).

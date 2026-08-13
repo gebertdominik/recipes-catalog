@@ -304,12 +304,15 @@ main.container {
   font-size: 1.15rem;
   margin: 0;
 }
+.recipe__figure {
+  margin: var(--space-6) 0;
+}
 .recipe__image {
   width: 100%;
-  max-height: 420px;
+  max-height: 440px;
   object-fit: cover;
   border-radius: var(--radius);
-  margin-block: var(--space-6);
+  border: 1px solid var(--border);
 }
 
 .recipe__meta {
@@ -341,21 +344,83 @@ main.container {
   margin-block: var(--space-6);
 }
 
-.recipe__ingredients,
+/* Two-column body: ingredients sidebar + instructions */
+.recipe__body {
+  margin-top: var(--space-8);
+}
 .recipe__instructions {
   margin-top: var(--space-8);
 }
-.recipe__ingredients ul {
+
+@media (min-width: 820px) {
+  .recipe__body {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--space-12);
+    align-items: start;
+  }
+  .recipe__instructions {
+    margin-top: 0;
+  }
+  .recipe__ingredients {
+    position: sticky;
+    top: var(--space-6);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: var(--space-6);
+  }
+}
+
+.recipe__ingredients h2 {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-4);
+}
+
+/* Ingredient list with checkboxes + aligned quantities */
+.ingredients {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-.recipe__ingredients li {
-  padding: var(--space-2) 0;
+.ingredients > li {
   border-bottom: 1px solid var(--border);
 }
-.recipe__ingredients li:last-child {
+.ingredients > li:last-child {
   border-bottom: none;
+}
+.ingredient {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  cursor: pointer;
+}
+.ingredient__check {
+  flex: none;
+  width: 1.05rem;
+  height: 1.05rem;
+  accent-color: var(--accent);
+  position: relative;
+  top: 2px;
+  margin: 0;
+  cursor: pointer;
+}
+.ingredient__amount {
+  flex: none;
+  min-width: 4.5rem;
+  font-weight: 600;
+  color: var(--accent-strong);
+}
+.ingredient__name {
+  flex: 1;
+}
+.ingredient__check:checked ~ .ingredient__amount,
+.ingredient__check:checked ~ .ingredient__name {
+  text-decoration: line-through;
+  text-decoration-color: var(--border-strong);
+  color: var(--muted);
+  font-weight: 400;
 }
 
 /* Numbered instruction steps with accent markers */
@@ -418,6 +483,18 @@ main.container {
   .recipe {
     max-width: 100%;
     padding: 0;
+  }
+  .recipe__body {
+    display: block;
+  }
+  .recipe__ingredients {
+    position: static;
+    border: none;
+    padding: 0;
+    margin-bottom: var(--space-6);
+  }
+  .recipe__instructions {
+    margin-top: var(--space-6);
   }
   .recipe__image {
     max-height: 240px;

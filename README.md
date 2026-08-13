@@ -33,9 +33,13 @@ prepTime: 15      # minutes
 cookTime: 55      # minutes
 totalTime: 70     # minutes
 ingredients:
-  - 3 ripe bananas, mashed
-  - 200 g flour
-  - 150 g sugar
+  - amount: "3"
+    item: ripe bananas, mashed
+  - amount: 200 g
+    item: flour
+  - amount: 150 g
+    item: sugar
+  - item: A pinch of salt      # amount is optional — omit it for "to taste" items
 ---
 
 1. Preheat the oven to 175°C (350°F).
@@ -59,7 +63,17 @@ Optional free-form notes go here.
 | `prepTime`    | number (min)    | no       |                                              |
 | `cookTime`    | number (min)    | no       |                                              |
 | `totalTime`   | number (min)    | no       |                                              |
-| `ingredients` | list of strings | no       | Rendered as a bullet list                    |
+| `ingredients` | list of objects | no       | Each has an optional `amount` and an `item` (see below) |
+
+**Ingredients** are a list of objects, each with:
+
+- `amount` (optional) — the quantity, shown in its own aligned column, e.g. `250 g`, `2 tbsp`, `1/2 tsp`. Wrap bare numbers in quotes (`"2"`) so YAML treats them as text. Omit entirely for "to taste" / "for the pan" items.
+- `item` (required) — the ingredient name, e.g. `all-purpose flour`.
+
+On the recipe page each ingredient gets a **checkbox** you can tick off while
+cooking; ticks are remembered per-recipe in your browser. Plain string
+ingredients (the old `- 250 g flour` form) still render for backward
+compatibility, but the object form gives the clean two-column layout.
 
 The Markdown body below the frontmatter is the instructions (a numbered list
 works best), plus any optional `## Notes` section.
