@@ -344,32 +344,12 @@ main.container {
   margin-block: var(--space-6);
 }
 
-/* Two-column body: ingredients sidebar + instructions */
+/* Stacked body: full-width ingredients section above instructions */
 .recipe__body {
   margin-top: var(--space-8);
 }
 .recipe__instructions {
-  margin-top: var(--space-8);
-}
-
-@media (min-width: 820px) {
-  .recipe__body {
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: var(--space-12);
-    align-items: start;
-  }
-  .recipe__instructions {
-    margin-top: 0;
-  }
-  .recipe__ingredients {
-    position: sticky;
-    top: var(--space-6);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: var(--space-6);
-  }
+  margin-top: var(--space-12);
 }
 
 .recipe__ingredients h2 {

@@ -32,7 +32,7 @@ layout: layouts/base.njk
 
   <div class="recipe__body">
     {% if ingredients %}
-      <aside class="recipe__ingredients">
+      <section class="recipe__ingredients">
         <h2>Ingredients</h2>
         <ul class="ingredients" data-ingredients>
           {% for ing in ingredients %}
@@ -47,7 +47,7 @@ layout: layouts/base.njk
             </li>
           {% endfor %}
         </ul>
-      </aside>
+      </section>
     {% endif %}
 
     <div class="recipe__instructions">
