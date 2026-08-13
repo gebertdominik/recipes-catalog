@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: "/tags/{{ tag | slugify }}/index.html"
+eleventyComputed:
+  title: "Recipes tagged “{{ tag }}”"
+---
+<section class="home-intro">
+  <a href="{{ '/' | url }}" class="recipe__back">← All recipes</a>
+  <h1>Tagged “{{ tag }}”</h1>
+</section>
+
+<section class="recipe-grid">
+  {% for recipe in collections.recipes %}
+    {% if tag in recipe.data.tags %}
+      {% include "partials/recipe-card.njk" %}
+    {% endif %}
+  {% endfor %}
+</section>

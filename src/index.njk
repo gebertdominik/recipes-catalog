@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+title: ""
+---
+<section class="home-intro">
+  <h1>{{ site.title }}</h1>
+  <p>{{ site.description }}</p>
+</section>
+
+<section class="recipe-controls" data-search-scope>
+  <input
+    type="search"
+    id="recipe-search"
+    placeholder="Search recipes by name, tag, or ingredient…"
+    aria-label="Search recipes"
+  />
+
+  <div class="tag-filters" role="group" aria-label="Filter by tag">
+    <button type="button" class="tag-filter is-active" data-tag="">All</button>
+    {% for tag in collections.tagList %}
+      <button type="button" class="tag-filter" data-tag="{{ tag | lower }}">{{ tag }}</button>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="recipe-grid" id="recipe-grid">
+  {% for recipe in collections.recipes %}
+    {% include "partials/recipe-card.njk" %}
+  {% endfor %}
+</section>
+
+<p class="no-results" id="no-results" hidden>No recipes match your search.</p>

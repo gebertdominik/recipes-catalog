@@ -1,0 +1,66 @@
+---
+layout: layouts/base.njk
+---
+<article class="recipe">
+  <a href="{{ '/' | url }}" class="recipe__back">← All recipes</a>
+
+  <header class="recipe__header">
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="recipe__description">{{ description }}</p>{% endif %}
+  </header>
+
+  {% if image %}
+    <img class="recipe__image" src="{{ image | url }}" alt="{{ title }}" />
+  {% endif %}
+
+  <dl class="recipe__meta">
+    {% if servings %}<div><dt>Servings</dt><dd>{{ servings }}</dd></div>{% endif %}
+    {% if prepTime %}<div><dt>Prep</dt><dd>{{ prepTime }} min</dd></div>{% endif %}
+    {% if cookTime %}<div><dt>Cook</dt><dd>{{ cookTime }} min</dd></div>{% endif %}
+    {% if totalTime %}<div><dt>Total</dt><dd>{{ totalTime }} min</dd></div>{% endif %}
+  </dl>
+
+  {% if tags %}
+    <p class="recipe__tags">
+      {% for tag in tags %}
+        <a class="tag-pill" href="{{ ('/tags/' + (tag | slugify) + '/') | url }}">{{ tag }}</a>
+      {% endfor %}
+    </p>
+  {% endif %}
+
+  {% if ingredients %}
+    <section class="recipe__ingredients">
+      <h2>Ingredients</h2>
+      <ul>
+        {% for ingredient in ingredients %}
+          <li>{{ ingredient }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  <section class="recipe__instructions">
+    <h2>Instructions</h2>
+    {{ content | safe }}
+  </section>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": {{ title | dump | safe }},
+  {% if description %}"description": {{ description | dump | safe }},{% endif %}
+  {% if image %}"image": {{ image | dump | safe }},{% endif %}
+  {% if servings %}"recipeYield": {{ servings | dump | safe }},{% endif %}
+  {% if prepTime %}"prepTime": "{{ prepTime | minutesToDuration }}",{% endif %}
+  {% if cookTime %}"cookTime": "{{ cookTime | minutesToDuration }}",{% endif %}
+  {% if totalTime %}"totalTime": "{{ totalTime | minutesToDuration }}",{% endif %}
+  {% if tags %}"keywords": {{ (tags | join(", ")) | dump | safe }},{% endif %}
+  {% if ingredients %}"recipeIngredient": {{ ingredients | dump | safe }},{% endif %}
+  "author": {
+    "@type": "Person",
+    "name": {{ site.author | dump | safe }}
+  }
+}
+</script>

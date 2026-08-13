@@ -1,0 +1,170 @@
+/* Custom styles layered on top of Pico.css */
+
+.home-intro {
+  margin-block-end: 2rem;
+}
+
+/* --- Search & tag controls --- */
+.recipe-controls {
+  margin-block-end: 2rem;
+}
+
+.tag-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-block-start: 0.75rem;
+}
+
+.tag-filter {
+  width: auto;
+  padding: 0.25rem 0.85rem;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  background: var(--pico-secondary-background);
+  border-color: var(--pico-secondary-border);
+  color: var(--pico-secondary-inverse);
+}
+
+.tag-filter.is-active {
+  background: var(--pico-primary-background);
+  border-color: var(--pico-primary-border);
+  color: var(--pico-primary-inverse);
+}
+
+/* --- Recipe grid & cards --- */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.recipe-card {
+  margin: 0;
+  padding: 1.25rem;
+}
+
+.recipe-card__image {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--pico-border-radius);
+  margin-block-end: 0.75rem;
+}
+
+.recipe-card h3 {
+  margin-block-end: 0.5rem;
+}
+
+.recipe-card__tags,
+.recipe__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-block-start: 0.75rem;
+}
+
+.tag-pill {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  background: var(--pico-secondary-background);
+  color: var(--pico-secondary-inverse);
+  text-decoration: none;
+}
+
+.tag-pill:hover {
+  background: var(--pico-primary-background);
+  color: var(--pico-primary-inverse);
+}
+
+.no-results {
+  text-align: center;
+  color: var(--pico-muted-color);
+  margin-block-start: 2rem;
+}
+
+/* --- Recipe detail page --- */
+.recipe__back {
+  display: inline-block;
+  margin-block-end: 1rem;
+  font-size: 0.9rem;
+}
+
+.recipe__image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: var(--pico-border-radius);
+  margin-block: 1rem;
+}
+
+.recipe__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--pico-card-background-color);
+  border-radius: var(--pico-border-radius);
+  margin-block: 1.5rem;
+}
+
+.recipe__meta div {
+  margin: 0;
+}
+
+.recipe__meta dt {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--pico-muted-color);
+}
+
+.recipe__meta dd {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.recipe__ingredients,
+.recipe__instructions {
+  margin-block-start: 2rem;
+}
+
+/* --- Print styles for kitchen use --- */
+@media print {
+  header,
+  footer,
+  .recipe-controls,
+  .recipe__back,
+  .recipe__tags {
+    display: none !important;
+  }
+
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+
+  main.container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .recipe__image {
+    max-height: 240px;
+  }
+
+  .recipe__meta {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 0.5rem 1rem;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+}

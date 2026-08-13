@@ -1,0 +1,14 @@
+{
+  "name": "numeric-recipes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A recipe website built with Eleventy, deployed to GitHub Pages.",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve",
+    "debug": "DEBUG=Eleventy* eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
