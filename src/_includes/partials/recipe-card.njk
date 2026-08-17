@@ -1,29 +1,18 @@
 {#
-  Renders a single recipe card.
+  Renders a single recipe row in the list.
   Expects `recipe` (an Eleventy collection item) in scope.
 #}
-<article
+<li
   class="recipe-card"
   data-search="{{ (recipe.data.title + ' ' + (recipe.data.tags | join(' ')) + ' ' + (recipe.data.ingredients | join(' '))) | lower }}"
   data-tags="{{ recipe.data.tags | join(' ') | lower }}"
 >
-  {% if recipe.data.image %}
-    <img
-      class="recipe-card__image"
-      src="{{ recipe.data.image | url }}"
-      alt="{{ recipe.data.title }}"
-      loading="lazy"
-    />
-  {% endif %}
-  <h3><a href="{{ recipe.url | url }}">{{ recipe.data.title }}</a></h3>
-  {% if recipe.data.description %}
-    <p>{{ recipe.data.description }}</p>
-  {% endif %}
+  <a class="recipe-card__title" href="{{ recipe.url | url }}">{{ recipe.data.title }}</a>
   {% if recipe.data.tags %}
-    <p class="recipe-card__tags">
+    <span class="recipe-card__tags">
       {% for tag in recipe.data.tags %}
-        <a class="tag-pill" href="{{ ('/tags/' + (tag | slugify) + '/') | url }}">{{ tag }}</a>
+        <span class="tag-pill" data-i18n-tag="{{ tag | lower }}">{{ tag }}</span>
       {% endfor %}
-    </p>
+    </span>
   {% endif %}
-</article>
+</li>

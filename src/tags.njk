@@ -6,17 +6,17 @@ pagination:
   alias: tag
 permalink: "/tags/{{ tag | slugify }}/index.html"
 eleventyComputed:
-  title: "Recipes tagged “{{ tag }}”"
+  title: 'Recipes tagged "{{ tag }}"'
 ---
-<section class="home-intro">
-  <a href="{{ '/' | url }}" class="recipe__back">← All recipes</a>
-  <h1>Tagged “{{ tag }}”</h1>
-</section>
+<div class="tag-page-header">
+  <a href="{{ '/' | url }}" class="recipe__back" data-i18n="recipe.back">← Wszystkie przepisy</a>
+  <h1><span data-i18n="tags.label">Oznaczone</span> „<span data-i18n-tag="{{ tag | lower }}">{{ tag }}</span>"</h1>
+</div>
 
-<section class="recipe-grid">
+<ul class="recipe-list">
   {% for recipe in collections.recipes %}
     {% if tag in recipe.data.tags %}
       {% include "partials/recipe-card.njk" %}
     {% endif %}
   {% endfor %}
-</section>
+</ul>

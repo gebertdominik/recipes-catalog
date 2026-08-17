@@ -1,7 +1,7 @@
 ---
 title: Chewy Chocolate Chip Cookies
 description: Crisp edges, soft chewy centers, and plenty of melting chocolate.
-image: ""
+image: /assets/images/chocolate-chip-cookies.jpg
 tags:
   - dessert
   - vegetarian
@@ -10,6 +10,7 @@ servings: 24
 prepTime: 20
 cookTime: 12
 totalTime: 32
+source: "https://www.seriouseats.com"
 ingredients:
   - amount: 280 g
     item: all-purpose flour

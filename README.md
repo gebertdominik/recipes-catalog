@@ -1,4 +1,4 @@
-# Numeric Recipes
+# Recipes Catalog
 
 A personal recipe website. Recipes are plain Markdown files with YAML
 frontmatter, built into a static site with [Eleventy (11ty)](https://www.11ty.dev/)
@@ -64,6 +64,7 @@ Optional free-form notes go here.
 | `cookTime`    | number (min)    | no       |                                              |
 | `totalTime`   | number (min)    | no       |                                              |
 | `ingredients` | list of objects | no       | Each has an optional `amount` and an `item` (see below) |
+| `source`      | string          | no       | Origin of the recipe — a URL renders as a clickable link, any other string renders as plain text |
 
 **Ingredients** are a list of objects, each with:
 
@@ -77,6 +78,23 @@ compatibility, but the object form gives the clean two-column layout.
 
 The Markdown body below the frontmatter is the instructions (a numbered list
 works best), plus any optional `## Notes` section.
+
+### Tags
+
+Each tag in a recipe's `tags:` list automatically generates a filter button on the
+home page and a dedicated listing page (e.g. `/tags/baking/`).
+
+If you use a **new tag** that doesn't exist yet, also add its translations to
+`src/assets/js/i18n.js` under `tagTranslations`, using the lowercase tag value as
+the key in both languages:
+
+```js
+pl: { ..., vegan: "Wegańskie" },
+en: { ..., vegan: "Vegan" },
+```
+
+Tags without a translation entry display the raw frontmatter string — no error,
+just untranslated.
 
 ### Images
 

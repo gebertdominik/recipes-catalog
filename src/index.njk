@@ -2,31 +2,35 @@
 layout: layouts/base.njk
 title: ""
 ---
-<section class="home-intro">
-  <h1>{{ site.title }}</h1>
-  <p>{{ site.description }}</p>
-</section>
+<div class="site-hero">
+  <img class="site-hero__image" src="/assets/images/hero.jpg" alt="" width="1400" height="500" />
+  <div class="site-hero__text">
+    <h1 data-i18n="site.title">{{ site.title }}</h1>
+    <p data-i18n="site.description">{{ site.description }}</p>
+  </div>
+</div>
 
 <section class="recipe-controls" data-search-scope>
   <input
     type="search"
     id="recipe-search"
-    placeholder="Search recipes by name, tag, or ingredient…"
+    placeholder="Szukaj przepisów…"
+    data-i18n-placeholder="search.placeholder"
     aria-label="Search recipes"
   />
 
   <div class="tag-filters" role="group" aria-label="Filter by tag">
-    <button type="button" class="tag-filter is-active" data-tag="">All</button>
+    <button type="button" class="tag-filter is-active" data-tag="" data-i18n="filter.all">Wszystkie</button>
     {% for tag in collections.tagList %}
       <button type="button" class="tag-filter" data-tag="{{ tag | lower }}">{{ tag }}</button>
     {% endfor %}
   </div>
 </section>
 
-<section class="recipe-grid" id="recipe-grid">
+<ul class="recipe-list" id="recipe-grid">
   {% for recipe in collections.recipes %}
     {% include "partials/recipe-card.njk" %}
   {% endfor %}
-</section>
+</ul>
 
-<p class="no-results" id="no-results" hidden>No recipes match your search.</p>
+<p class="no-results" id="no-results" hidden data-i18n="noResults">Żaden przepis nie pasuje do wyszukiwania.</p>

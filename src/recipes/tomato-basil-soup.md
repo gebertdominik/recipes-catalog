@@ -1,7 +1,7 @@
 ---
 title: Roasted Tomato Basil Soup
 description: A rich, velvety soup made from oven-roasted tomatoes and fresh basil.
-image: ""
+image: /assets/images/tomato-basil-soup.jpg
 tags:
   - dinner
   - vegetarian

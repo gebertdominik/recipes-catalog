@@ -1,7 +1,7 @@
 ---
 title: Classic Buttermilk Pancakes
 description: Fluffy, golden pancakes made from scratch — a weekend breakfast staple.
-image: ""
+image: /assets/images/classic-pancakes.jpg
 tags:
   - breakfast
   - vegetarian
@@ -10,6 +10,7 @@ servings: 4
 prepTime: 10
 cookTime: 15
 totalTime: 25
+source: "Babcia's recipe book"
 ingredients:
   - amount: 250 g
     item: all-purpose flour

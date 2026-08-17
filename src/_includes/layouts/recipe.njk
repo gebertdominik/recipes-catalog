@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 ---
 <article class="recipe">
-  <a href="{{ '/' | url }}" class="recipe__back">← All recipes</a>
+  <a href="{{ '/' | url }}" class="recipe__back" data-i18n="recipe.back">← Wszystkie przepisy</a>
 
   <header class="recipe__header">
     <h1>{{ title }}</h1>
@@ -11,29 +11,40 @@ layout: layouts/base.njk
 
   {% if image %}
     <figure class="recipe__figure">
-      <img class="recipe__image" src="{{ image | url }}" alt="{{ title }}" />
+      <img class="recipe__image" src="{{ image | url }}" alt="{{ title }}" width="900" height="600" loading="lazy" />
     </figure>
   {% endif %}
 
   <dl class="recipe__meta">
-    {% if servings %}<div><dt>Servings</dt><dd>{{ servings }}</dd></div>{% endif %}
-    {% if prepTime %}<div><dt>Prep</dt><dd>{{ prepTime }} min</dd></div>{% endif %}
-    {% if cookTime %}<div><dt>Cook</dt><dd>{{ cookTime }} min</dd></div>{% endif %}
-    {% if totalTime %}<div><dt>Total</dt><dd>{{ totalTime }} min</dd></div>{% endif %}
+    {% if servings %}<div><dt data-i18n="recipe.servings">Porcje</dt><dd>{{ servings }}</dd></div>{% endif %}
+    {% if prepTime %}<div><dt data-i18n="recipe.prep">Przygotowanie</dt><dd>{{ prepTime }} min</dd></div>{% endif %}
+    {% if cookTime %}<div><dt data-i18n="recipe.cook">Gotowanie</dt><dd>{{ cookTime }} min</dd></div>{% endif %}
+    {% if totalTime %}<div><dt data-i18n="recipe.total">Łącznie</dt><dd>{{ totalTime }} min</dd></div>{% endif %}
   </dl>
 
   {% if tags %}
     <p class="recipe__tags">
       {% for tag in tags %}
-        <a class="tag-pill" href="{{ ('/tags/' + (tag | slugify) + '/') | url }}">{{ tag }}</a>
+        <a class="tag-pill" href="{{ ('/tags/' + (tag | slugify) + '/') | url }}" data-i18n-tag="{{ tag | lower }}">{{ tag }}</a>
       {% endfor %}
+    </p>
+  {% endif %}
+
+  {% if source %}
+    <p class="recipe__source">
+      <span data-i18n="recipe.source">Źródło</span>:
+      {% if source | isUrl %}
+        <a href="{{ source }}" target="_blank" rel="noopener noreferrer">{{ source | hostname }}</a>
+      {% else %}
+        {{ source }}
+      {% endif %}
     </p>
   {% endif %}
 
   <div class="recipe__body">
     {% if ingredients %}
       <section class="recipe__ingredients">
-        <h2>Ingredients</h2>
+        <h2 data-i18n="recipe.ingredients">Składniki</h2>
         <ul class="ingredients" data-ingredients>
           {% for ing in ingredients %}
             {% set amount = ing.amount or "" %}
@@ -51,7 +62,7 @@ layout: layouts/base.njk
     {% endif %}
 
     <div class="recipe__instructions">
-      <h2>Instructions</h2>
+      <h2 data-i18n="recipe.instructions">Instrukcje</h2>
       {{ content | safe }}
     </div>
   </div>

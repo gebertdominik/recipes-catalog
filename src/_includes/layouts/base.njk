@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,9 +16,13 @@
   <body>
     <header class="site-header">
       <div class="container site-header__inner">
-        <a class="site-header__brand" href="{{ '/' | url }}">{{ site.title }}</a>
-        <nav class="site-nav">
-          <a href="{{ '/' | url }}">All recipes</a>
+        <a class="site-header__brand" href="{{ '/' | url }}" data-i18n="site.title">{{ site.title }}</a>
+        <nav class="site-header__nav">
+          <a href="{{ '/' | url }}" data-i18n="nav.all">Wszystkie przepisy</a>
+          <div class="lang-switcher" role="group" aria-label="Language">
+            <button class="lang-btn is-active" data-lang="pl">PL</button>
+            <button class="lang-btn" data-lang="en">EN</button>
+          </div>
         </nav>
       </div>
     </header>
@@ -28,12 +32,14 @@
     <footer class="site-footer">
       <div class="container">
         <small>
-          {{ site.title }} — built with
+          <span data-i18n="footer.builtWith">Katalog Przepisów — zbudowane z</span>
           <a href="https://www.11ty.dev/">Eleventy</a>.
         </small>
       </div>
     </footer>
 
+    <script src="{{ '/assets/js/i18n.js' | url }}" defer></script>
+    <script src="{{ '/assets/js/tag-colors.js' | url }}" defer></script>
     <script src="{{ '/assets/js/search.js' | url }}" defer></script>
     <script src="{{ '/assets/js/ingredients.js' | url }}" defer></script>
   </body>

@@ -10,6 +10,14 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addFilter("slugify", slugify);
 
+  eleventyConfig.addFilter("isUrl", (str) =>
+    typeof str === "string" && /^https?:\/\//.test(str)
+  );
+
+  eleventyConfig.addFilter("hostname", (url) => {
+    try { return new URL(url).hostname; } catch { return url; }
+  });
+
   eleventyConfig.addFilter("minutesToDuration", (minutes) => {
     if (!minutes) return undefined;
     return `PT${minutes}M`;
