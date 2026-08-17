@@ -3,7 +3,7 @@ layout: layouts/base.njk
 title: ""
 ---
 <div class="site-hero">
-  <img class="site-hero__image" src="/assets/images/hero.jpg" alt="" width="1400" height="500" />
+  <img class="site-hero__image" src="{{ '/assets/images/hero.jpg' | url }}" alt="" width="1400" height="500" />
   <div class="site-hero__text">
     <h1 data-i18n="site.title">{{ site.title }}</h1>
     <p data-i18n="site.description">{{ site.description }}</p>
