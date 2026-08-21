@@ -52,6 +52,7 @@
     pl: {
       breakfast:  "Śniadanie",
       dinner:     "Obiad",
+      supper:     "Kolacja",
       dessert:    "Deser",
       vegetarian: "Wegetariańskie",
       quick:      "Szybkie",
@@ -61,6 +62,7 @@
     en: {
       breakfast:  "Breakfast",
       dinner:     "Dinner",
+      supper:     "Supper",
       dessert:    "Dessert",
       vegetarian: "Vegetarian",
       quick:      "Quick",
